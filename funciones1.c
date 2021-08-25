@@ -14,9 +14,9 @@ int nbr_size(int n)
 	{
 		counter++;
 	}
-	for(; (n / 10) != 0; counter++)
+	for (; (n / 10) != 0; counter++)
 		n = n / 10;
-	return(counter);
+	return (counter);
 }
 
 /**
@@ -29,16 +29,17 @@ int nbr_size(int n)
 int _num_print(int n)
 {
 	unsigned int nbr;
+
 	nbr = n;
 
 	if ((nbr / 10) != 0)
 	{
 
-		_num_print(nbr/10);
+		_num_print(nbr / 10);
 	}
 	putchar((nbr % 10) + '0');
 
-	return(nbr_size(n));
+	return (nbr_size(n));
 }
 
 /**
@@ -52,21 +53,21 @@ int toker(char *buffer)
 {
 	char *string, *copy;
 	int a, b = 0;
-	
+
 	for (a = 0; buffer[a] != '\0'; a++)
 		;
-	copy = malloc(sizeof(char *)*a);
+	copy = malloc(sizeof(char *) * a);
 	if (!copy)
-		return(-1);
+		return (-1);
 	strcpy(copy, buffer);
 	string = strtok(copy, " ");
 	while (string != NULL)
-		{
-			b++;
-			string = strtok(NULL, " ");
-		}
+	{
+		b++;
+		string = strtok(NULL, " ");
+	}
 	if (!buffer)
-		return(-1);
+		return (-1);
 	free(copy);
 	return (b);
 }

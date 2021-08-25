@@ -1,5 +1,7 @@
 #include "header.h"
-/** _strdup - Function that returns a pointer to a newly
+
+/**
+ * _strdup - Function that returns a pointer to a newly
  * allocated space in memory, which contains a copy of a string
  * given as a parameter.
  * @str: string to copy
@@ -29,7 +31,7 @@ char *_strdup(char *str)
 	return (p);
 }
 /**
- * _strncpy - Function that copies a string.
+ * _strcpy - Function that copies a string.
  * @dest: destiny string
  * @src: source string
  * Return: dest
@@ -43,7 +45,7 @@ char *_strcpy(char *dest, char *src)
 	return (dest);
 }
 /**
- * _strncat - A function that concatenates two strings.
+ * _strcat - A function that concatenates two strings.
  * @dest: destiny string
  * @src: source string
  * @n: number of bytes of the string
