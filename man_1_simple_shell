@@ -59,6 +59,6 @@ access(2), execve(2), exit(3), fork(2), free(3), isatty(3), malloc(3), wait(2), 
 This shell does not recognize yet built-in commands and also memory leaks are found. This is still a work in progress.
 .br
 .SH AUTHOR
-Diego Guarise - 3291@holbertonschool.com 
+Diego Guarise - 3291@holbertonschool.com
 .br
 Andres Ortiz - 3283@holbertonschool.com
