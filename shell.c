@@ -42,12 +42,6 @@ int main(void)
 		free(inputteclado);
 		/*free(path);*/
 	}
-	/*freearray(PATH);*/
-	/*free(inputteclado);*/
-	/**
-	 * Liberar espacio de otra funcion en esta?
-	 * (wordtoker: Esta funcion nos dio problemas con el valgrind
-	 */
 	return (0);
 
 }
