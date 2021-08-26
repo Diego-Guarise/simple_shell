@@ -7,30 +7,27 @@
  * Return: Amount of tokens
  */
 
-char **wordtoker(char *buffer, char *separator)
+char **wordtoker(char *inputteclado, char *separator)
 {
-	char *copybuffer, *string2, **algo, *tmp = " ";
-	int a, a2, b;
+	char *copyinputteclado, *string2, **inputtecladotoker, *tmp = " ";
+	int a2, b;
 
-	copybuffer = _strdup(buffer);
-	b = toker(copybuffer);
-	algo = malloc(sizeof(char *) * (b + 1));
-	if (!algo)
+	copyinputteclado = _strdup(inputteclado);
+	b = toker(copyinputteclado);
+	inputtecladotoker = malloc(sizeof(char *) * (b + 1));
+	if (!inputtecladotoker)
 		return (NULL);
-	algo[b] = NULL;
+	inputtecladotoker[b] = NULL;
 	tmp = separator;
-	string2 = strtok(copybuffer, tmp);
+	string2 = strtok(copyinputteclado, tmp);
 	for (a2 = 0; a2 < b; a2++)
 	{
-		algo[a2] = _strdup(string2);
-		if (!algo[a2])
+		inputtecladotoker[a2] = _strdup(string2);
+		if (!inputtecladotoker[a2])
 			return (NULL);
 		string2 = strtok(NULL, tmp);
 	}
-
-	for (a = 0; algo[a] != NULL; a++)
-	;
-	return (algo);
+	return (inputtecladotoker);
 	/*libera memoria en shell, pero sigue dando mal*/
 }
 
@@ -41,59 +38,59 @@ char **wordtoker(char *buffer, char *separator)
  * Return: Ponter to 2D Array
  */
 
-char **wordtokerpath(char *buffer, char separator)
+char **wordtokerpath(char *path, char separator)
 {
-	char *string2, **algo, tmp[] = ":";
+	char *string2, **arraypath, tmp[] = ":", *copypath;
 	int a2, length, b;
 
-	b = tokerpath(buffer);
-	algo = malloc(sizeof(char *) * (b + 1));
-	if (!algo)
+	b = tokerpath(path);
+	arraypath = malloc(sizeof(char *) * (b + 2));
+	if (!arraypath)
 		return (NULL);
-	algo[b] = NULL;
+	copypath = _strdup(path);
+	toker(copypath);/*Revisar memoria al mover el puntero*/
+	arraypath[b] = _strdup(copypath);
+	arraypath[b + 1] = NULL;
 	tmp[0] = separator;
-	string2 = strtok(buffer, tmp);
+	string2 = strtok(path, tmp);
 	for (a2 = 0; a2 < b; a2++)
 	{
 		length = strlen(string2);
-		algo[a2] = malloc(length);
-		if (!algo[a2])
+		arraypath[a2] = malloc(length);
+		if (!arraypath[a2])
+			/*free(arraypath[a2])*/
 			return (NULL);
-		algo[a2] = _strdup(string2);
+		arraypath[a2] = _strdup(string2);
 		string2 = strtok(NULL, tmp);
 	}
-
-	return (algo);
+	
+	return (arraypath);
 
 	/*libera memoria en shell, pero sigue dando mal*/
 }
 
 /**
  * tokerpath - Function to copy buffer
- * @buffer: Command line
+ * @path: Command line
  * Description: recibe una string y la tokeniza y devuelve el numero de tokens
  * Return: Amount of tokens
  */
 
-int tokerpath(char *buffer)
+int tokerpath(char *path)
 {
 	char *string, *copy;
-	int a, b = 0;
+	int b = 0;
 
-	for (a = 0; buffer[a] != '\0'; a++)
-		;
-	copy = malloc(sizeof(char *) * a);
-	if (!copy)
-		return (-1);
-	strcpy(copy, buffer);
-	string = strtok(copy, ":");
+	copy = _strdup(path);/*copy path into copy*/
+	string = _strdup(strtok(copy, ":"));
 	while (string != NULL)
 	{
 		b++;
-		string = strtok(NULL, ":");
+		free(string);
+		string = _strdup(strtok(NULL, ":"));
 	}
-	if (!buffer)
-		return (-1);
+	free(string);
+	free(copy);
 return (b);
 }
 

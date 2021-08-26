@@ -13,20 +13,18 @@
 char **concatpath(char *inputteclado, char **PATH)
 {
 	char *strcmd, **algo, **retorno;
-	int a, b = 0;
+	int a, b = 0, c;
 
 	for (a = 0; PATH[a] != NULL; a++)
 		;/*Recorre array para reservar memoria*/
-
 	retorno = malloc(sizeof(char *) * a);
-	for (a = 0; PATH[a] != NULL; a++)
+	for (c = 0; c != (a - 1); c++)
 	{
 		algo = wordtoker(inputteclado, " ");
-		strcmd = malloc(sizeof(char *) * (strlen(PATH[a])));
-		strcmd = string_concat(PATH[a], string_concat("/", algo[b]));
-		retorno[a] = malloc(sizeof(char *) * (strlen(strcmd)));
-		retorno[a] = _strdup(strcmd);
-		printf("%s\n", strcmd);
+		strcmd = malloc(sizeof(char *) * (strlen(PATH[c])));
+		strcmd = string_concat(PATH[c], string_concat("/", algo[b]));
+		retorno[c] = malloc(sizeof(char *) * (strlen(strcmd)));
+		retorno[c] = _strdup(strcmd);
 	}
 	return (retorno);
 	free(retorno);
@@ -58,12 +56,11 @@ int funcionexe(char **retorno, char **inputtecladotoker)
 				execve(retorno[a], inputtecladotoker, NULL);
 					break;
 			}
-			if (access(inputtecladotoker[a], X_OK) == 0)
-			{
-				execve(inputtecladotoker[a], inputtecladotoker, NULL);
-					break;
-			}
 		}
+		if (access(inputtecladotoker[0], X_OK) == 0)
+			{
+				execve(inputtecladotoker[0], inputtecladotoker, NULL);
+			}
 		printf("Command %s cannot be found. RUN!\n", inputtecladotoker[0]);
 		exit(98);
 	}

@@ -1,45 +1,16 @@
 #include "header.h"
 
 /**
- * nbr_size - counts length returned
- * @n: int to be printed
- * Return: number of ints printed
+ * freearray - libera array de strings
+ * @array: array de string
  */
-
-int nbr_size(int n)
+void freearray(char **array)
 {
-	int counter = 1;
+	int a = 0;
 
-	if (n < 0)
-	{
-		counter++;
-	}
-	for (; (n / 10) != 0; counter++)
-		n = n / 10;
-	return (counter);
-}
-
-/**
- * _num_print - prints digits
- * @n: integer to be printed
- *
- * Return: nbr of ints to be printed
- */
-
-int _num_print(int n)
-{
-	unsigned int nbr;
-
-	nbr = n;
-
-	if ((nbr / 10) != 0)
-	{
-
-		_num_print(nbr / 10);
-	}
-	putchar((nbr % 10) + '0');
-
-	return (nbr_size(n));
+	for (; array[a] != NULL; a++)
+		free(array[a]);
+	free(array);
 }
 
 /**
@@ -66,8 +37,6 @@ int toker(char *buffer)
 		b++;
 		string = strtok(NULL, " ");
 	}
-	if (!buffer)
-		return (-1);
 	free(copy);
 	return (b);
 }

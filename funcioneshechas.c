@@ -24,11 +24,12 @@ char *_strdup(char *str)
 			{
 				p[a] = str[a];
 			}
+			/*free(str);*/
 			p[len] = '\0';
-			return (p);
 		}
 	}
 	return (p);
+	
 }
 /**
  * _strcpy - Function that copies a string.

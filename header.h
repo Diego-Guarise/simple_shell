@@ -9,8 +9,6 @@
 #include <sys/types.h>
 
 /* Funtions prototypes */
-int nbr_size(int n);
-int _num_print(int n);
 int tokerpath(char *buffer);
 int toker(char *buffer);
 char **wordtoker(char *buffer, char *separator);
@@ -21,8 +19,7 @@ char *_strdup(char *str);
 char *getPath();
 char *string_concat(char *s1, char *s2);
 char *pathtoker(int argc, char *argv[]);
-extern char **environ;
 char **concatpath(char *inputteclado, char **PATH);
 int funcionexe(char **retorno, char **inputtecladotoker);
-
+void freearray(char **array);
 #endif
