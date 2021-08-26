@@ -29,7 +29,6 @@ char *_strdup(char *str)
 		}
 	}
 	return (p);
-	
 }
 /**
  * _strcpy - Function that copies a string.

@@ -32,14 +32,13 @@ char **concatpath(char *inputteclado, char **PATH)
 
 /**
  * funcionexe - ejecuta el programa (ejemplo: ls, pwd, etc)
- * @retorno: array de string de las posibles direcciones del programa
  * @inputtecladotoker: array de string del input
  * Return: Nothing on Success.
  */
 
-int funcionexe(char **retorno, char **inputtecladotoker)
+int funcionexe(char **inputtecladotoker)
 {
-	int a, status;
+	int status;
 
 	pid_t pid = 0;
 
@@ -49,18 +48,10 @@ int funcionexe(char **retorno, char **inputtecladotoker)
 
 	if (pid == 0)
 	{
-		for (a = 0; retorno[a]; a++)
-		{
-			if (access(retorno[a], X_OK) == 0)
-			{
-				execve(retorno[a], inputtecladotoker, NULL);
-					break;
-			}
-		}
 		if (access(inputtecladotoker[0], X_OK) == 0)
-			{
-				execve(inputtecladotoker[0], inputtecladotoker, NULL);
-			}
+		{
+			execve(inputtecladotoker[0], inputtecladotoker, NULL);
+		}
 		printf("Command %s cannot be found. RUN!\n", inputtecladotoker[0]);
 		exit(98);
 	}

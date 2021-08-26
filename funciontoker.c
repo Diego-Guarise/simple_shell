@@ -1,7 +1,7 @@
 #include "header.h"
 /**
  * wordtoker - Function to copy buffer
- * @buffer: Command line
+ * @inputteclado: Command line
  * @separator: Separator character
  * Description: recibe una string y la tokeniza y devuelve la palabra
  * Return: Amount of tokens
@@ -12,7 +12,7 @@ char **wordtoker(char *inputteclado, char *separator)
 	char *copyinputteclado, *string2, **inputtecladotoker, *tmp = " ";
 	int a2, b;
 
-	copyinputteclado = _strdup(inputteclado);
+	copyinputteclado = strdup(inputteclado);
 	b = toker(copyinputteclado);
 	inputtecladotoker = malloc(sizeof(char *) * (b + 1));
 	if (!inputtecladotoker)
@@ -22,18 +22,19 @@ char **wordtoker(char *inputteclado, char *separator)
 	string2 = strtok(copyinputteclado, tmp);
 	for (a2 = 0; a2 < b; a2++)
 	{
-		inputtecladotoker[a2] = _strdup(string2);
+		inputtecladotoker[a2] = strdup(string2);
 		if (!inputtecladotoker[a2])
 			return (NULL);
 		string2 = strtok(NULL, tmp);
 	}
+	free(copyinputteclado);
 	return (inputtecladotoker);
 	/*libera memoria en shell, pero sigue dando mal*/
 }
 
 /**
  * wordtokerpath - Function to copy path
- * @buffer: Command line
+ * @path: Command line
  * @separator: Separator character
  * Return: Ponter to 2D Array
  */
@@ -47,9 +48,9 @@ char **wordtokerpath(char *path, char separator)
 	arraypath = malloc(sizeof(char *) * (b + 2));
 	if (!arraypath)
 		return (NULL);
-	copypath = _strdup(path);
+	copypath = strdup(path);
 	toker(copypath);/*Revisar memoria al mover el puntero*/
-	arraypath[b] = _strdup(copypath);
+	arraypath[b] = strdup(copypath);
 	arraypath[b + 1] = NULL;
 	tmp[0] = separator;
 	string2 = strtok(path, tmp);
@@ -60,10 +61,10 @@ char **wordtokerpath(char *path, char separator)
 		if (!arraypath[a2])
 			/*free(arraypath[a2])*/
 			return (NULL);
-		arraypath[a2] = _strdup(string2);
+		arraypath[a2] = strdup(string2);
 		string2 = strtok(NULL, tmp);
 	}
-	
+
 	return (arraypath);
 
 	/*libera memoria en shell, pero sigue dando mal*/
@@ -81,8 +82,8 @@ int tokerpath(char *path)
 	char *string, *copy;
 	int b = 0;
 
-	copy = _strdup(path);/*copy path into copy*/
-	string = _strdup(strtok(copy, ":"));
+	copy = strdup(path);/*copy path into copy*/
+	string = strdup(strtok(copy, ":"));
 	while (string != NULL)
 	{
 		b++;

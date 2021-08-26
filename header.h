@@ -20,6 +20,6 @@ char *getPath();
 char *string_concat(char *s1, char *s2);
 char *pathtoker(int argc, char *argv[]);
 char **concatpath(char *inputteclado, char **PATH);
-int funcionexe(char **retorno, char **inputtecladotoker);
+int funcionexe(char **inputtecladotoker);
 void freearray(char **array);
 #endif
