@@ -1,0 +1,18 @@
+.TH simple_shell man page
+
+.SH NAME
+simple_shell
+.SH SYNOPSIS
+This is a simple version of a command line interpreter.
+.SH DESCRIPTION
+This command line interpreter receives a command through the standard input and will excecute it if is a valid comand, or show an error message and a new prompt if the command is invalid.
+.PP
+.SH FILES
+.SH SEE ALSO
+El shell del Marce
+.SH BUGS
+BOEEEEEEEEEEEEEEEEHHHHHHHHHHHHHHHHHHHHHHH
+.SH AUTHOR
+Diego Guarise - 3291@holbertonschool.com 
+.br
+Andres Ortiz - 3283@holbertonschool.com
