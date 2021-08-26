@@ -10,6 +10,48 @@ This is a simple version of a command line interpreter.
 .SH DESCRIPTION
 This command line interpreter receives a command through the standard input and will excecute it if is a valid comand, or show an error message and a new prompt if the command is invalid.
 .br
+.SH EXAMPLE
+Command ls - Will list directory contents.
+Some arguments that can be used with ls are:
+
+       --author
+       	      with -l, print the author of each file
+       -c     with  -lt: sort by, and show, ctime (time of last modification of file status information); with -l: show  ctime  and sort by name; otherwise: sort by ctime, newest first
+
+       -C     list entries by columns
+
+       -d, --directory
+              list directories themselves, not their contents
+       --group-directories-first
+              group directories before files.;
+       -i, --inode
+              print the index number of each file
+
+       -l     use a long listing format
+       -m     fill width with a comma separated list of entries
+       -o     like -l, but do not list group information
+       -p, --indicator-style=slash
+              append / indicator to directories
+       -q, --hide-control-chars
+              print ? instead of nongraphic characters
+       -Q, --quote-name
+              enclose entry names in double quotes
+       -r, --reverse
+              reverse order while sorting
+       -R, --recursive
+              list subdirectories recursively
+       -s, --size
+              print the allocated size of each file, in blocks
+       -S     sort by file size, largest first
+       --time-style=TIME_STYLE
+              time/date format with -l; see TIME_STYLE below
+       -t     sort by time, newest first; see --time
+       -u     with -lt: sort by, and show, access  time;  with  -l:  show access  time  and  sort  by name; otherwise: sort by access time, newest first
+       -U     do not sort; list entries in directory order
+       -x     list entries by lines instead of by columns
+       -X     sort alphabetically by entry extension
+       -Z, --context
+              print any security context of each file
 .SH SEE ALSO
 access(2), execve(2), exit(3), fork(2), free(3), isatty(3), malloc(3), wait(2), write()
 .br
